@@ -1,0 +1,202 @@
+@font-face {
+    font-family: 'Torus';
+    src: local("Torus-Normal"), url("../fonts/torusNormal.otf") format("opentype");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Torus';
+    src: local("Torus-Bold"), url("../fonts/torusSemibold.otf") format("opentype");
+    font-weight: bold;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+    --light-pink: #c03e7a;
+    --dark-pink: #b22f6a;
+    --message-orange: #b25a2f;
+    --error-red: #b12f2f;
+    --light-green: #39b869;
+    --dark-green: #2a894e;
+    --dark-bg: #18171c;
+    --dark-code: #242424;
+}
+
+*, *:after *:before {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--dark-bg);
+    background-image: url("../assets/background.svg");
+    background-position: 42% 20%;
+    background-size: 100% 205%;
+    background-blend-mode: multiply;
+    font-family: "Roboto", serif;
+    min-height: 100vh;
+}
+
+dialog {
+    position: relative;
+    margin: auto auto;
+    border: none;
+    background-color: transparent;
+}
+
+dialog::backdrop {
+    background-color: rgba(0,0,0,0.3);
+}
+
+dialog > pre {
+    white-space: pre-line;
+    font-family: 'Roboto';
+    font-weight: normal;
+    padding: 2.5rem 1rem 1rem 1rem;
+    border-radius: 1rem;
+    user-select: none;
+    background-color: var(--message-orange);
+    color: white;
+}
+
+dialog > img {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+
+dialog > img:hover {
+    scale: 1.1;
+    transition: all 0.5s;
+}
+
+button {
+    font-family: 'Torus';
+    font-weight: bold;
+    appearance: none;
+    padding: 0.25rem 1rem 0.25rem 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    background-color: var(--light-pink);
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--dark-pink);
+    transition: all 0.25s;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    background-color: var(--error-red);
+    transition: all 0.25s;
+}
+
+input {
+    font-family: 'Roboto';
+    font-weight: bold;
+    appearance: none;
+    border: none;
+    border-bottom: 2px solid white;
+    border-radius: 0.25rem;
+    padding: 0.25rem 6px 0.25rem 6px;
+    background-color: rgba(0,0,0,0.7);
+    cursor: text;
+    color: white;
+}
+
+input:focus {
+    outline: none;
+    border-bottom-color: #999;
+    transition: all 0.50s;
+}
+
+#bbcode-container {
+    position: relative;
+    display: none;
+    padding: 12px 25% 12px 12px;
+    background-color: var(--dark-code);
+    color: white;
+    font-weight: bolder;
+    text-align: left;
+}
+
+#bbcode-container > img {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+#bbcode-container > img:hover {
+    scale: 1.1;
+    transition: all 0.5s;
+}
+
+#display-message {
+    display: none;
+    font-family: 'Torus';
+    background-color: var(--message-orange);
+    padding: 0.25rem 1rem 0.25rem 1rem;
+    border-radius: 0.25rem;
+
+    width: fit-content;
+    text-align: center;
+    margin: 0.25rem auto;
+}
+
+#help-button {
+    display: block;
+    background-image: url("../assets/circle-help.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-color: transparent;
+    height: 24px;
+    margin: 0.75rem auto;
+}
+
+#help-button:hover {
+    scale: 1.1;
+    transition: all 0.5s;
+}
+
+#confirm-area-button {
+    background-color: var(--light-green); 
+}
+
+#confirm-area-button:hover {
+    transition: all 0.5s;
+    background-color: var(--dark-green);
+}
+
+@keyframes fade-in {
+    from {
+        display: none;
+        opacity: 0;
+    }
+    to {
+        display: block;
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    from {
+        display: block;
+        opacity: 1;
+    }
+    to {
+        display: none;
+        opacity: 0;
+    }
+}

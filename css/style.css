@@ -1,0 +1,92 @@
+.main-content {
+    padding-top: 0.75rem;
+    text-align: center;
+    color: white;
+}
+
+.main-content > h1 {
+    margin-bottom: 0.75rem;
+}
+
+.main-content > #image-url {
+    margin-right: 0.75rem;
+}
+
+.main-content > button {
+    margin: 0.25rem auto;
+}
+
+.main-content > input {
+    margin: 0.50rem auto;
+}
+
+.main-content > #confirm-area-button {
+    margin-left: 0.50rem;
+}
+
+#canvas-container {
+    display: grid;
+    place-content: center;
+    position: relative;
+    margin-top: 1rem;
+}
+
+#canvas-container > * {
+    grid-area: 1 / 1;
+}
+
+#rectangle-container {
+    position: relative;
+    z-index: 0;
+}
+
+#rectangle-container > div {
+    border: 2px solid transparent;
+    border-image: linear-gradient(45deg, white, #999);
+    border-image-slice: 1;
+}
+
+#rectangle-container > div > span {
+    font-family: 'Torus';
+    font-weight: normal;
+
+    opacity: 0;
+    text-align: center;
+    color: white;
+    padding: 5px 15px;
+    background-color: #242424;
+    border-radius: 6px;
+
+    position: absolute;
+    width: fit-content;
+    translate: -50% -50%;
+    bottom: 100%;
+}
+
+#rectangle-container > div > span::after {
+    content: " ";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border: 5px solid #242424;
+    border-color: #242424 transparent transparent transparent;
+}
+
+#rectangle-container > div:hover > span {
+    opacity: 1;
+    transition: all 0.5s;
+}
+
+#main-canvas {
+    z-index: 0;
+}
+
+#interaction-canvas {
+    position: relative;
+    z-index: 1;
+}
+
+#create-link-button {
+    margin-top: 0.75rem;
+}

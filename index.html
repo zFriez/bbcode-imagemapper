@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/default.css">
+    <script defer src="./js/script.js"></script>
+    <script defer src="./js/drag.js"></script>
+    <script defer src="./js/scale.js"></script>
+    <title>BBCode Imagemap Tool</title>
+</head>
+<body>
+    <!-- https://w.wallhaven.cc/full/85/wallhaven-855vg2.jpg -->
+    <!-- https://i.ibb.co/rZ9Dstq/futebol.png -->
+    <main class="main-content">
+        <h1>BBCode Imagemap Tool</h1>
+        <input type="url" id="image-url">
+        <button id="image-url-button">add url image</button>
+        <button id="help-button"></button>
+        <code id="bbcode-container"></code>
+        <p id="display-message"></p>
+    </main>
+    <dialog id="help-popup">
+        <pre>
+            BBCode Imagemap Tool is a tool for the markup language BBCode, used mainly on forums in osu!
+            and it's main purpose is to provide an easier and intuite way to create imagemaps.
+
+            Below are the shortcuts:
+                - Click and hold left click: create selection 
+                - Right click on selection: remove selection
+        </pre>
+        <img src="./assets/circle-x.svg">
+    </dialog>
+</body>
+</html>
