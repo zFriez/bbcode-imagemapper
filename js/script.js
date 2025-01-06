@@ -132,7 +132,7 @@ function linkAreaButtonFunction() {
 
         allRectangles.forEach(rect => {
             coords = `${rect.scaled.x} ${rect.scaled.y} ${rect.scaled.w} ${rect.scaled.h}`
-            input = ` ${rect.userInput.redirectLink} ${rect.userInput.title}`
+            input = ` ${rect.userInput.redirectLink} "${rect.userInput.title}"`
             results.push(coords + input)
         })
         
@@ -150,7 +150,7 @@ function linkAreaButtonFunction() {
 
 function bbcodeInteractions() {
     let svgCopy = document.createElement("img")
-    svgCopy.src = "../assets/copy.svg"
+    svgCopy.src = "./assets/copy.svg"
     bbcodeContent.appendChild(svgCopy)
 
     svgCopy.addEventListener("click", () => {
