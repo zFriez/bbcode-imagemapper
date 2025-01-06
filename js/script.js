@@ -30,10 +30,23 @@ imageUrlButton.addEventListener("click", () => {
         return
     }
 
-    imageUrlButton.style.display = "none"
-    imageUrlInput.style.display = "none"
+    if (checkIfStaticUrl(imageUrlInput.value) == false) {
+        displayMessage.style.animation = "fade-in 0.5s forwards"
+        displayMessage.style.display = "block"
+        displayMessage.textContent = "URL is not static, try a URL that ends with an image extension."
 
-    createCanvas()
+        setTimeout(() => {displayMessage.style.animation = "fade-out 0.5s forwards"}, 2000)
+        setTimeout(() => {
+            displayMessage.style.display = "none"
+            imageUrlInput.style.display = "inline-block"
+            imageUrlButton.style.display = "inline-block"
+        }, 2500)
+    } else {
+        imageUrlButton.style.display = "none"
+        imageUrlInput.style.display = "none"
+    
+        createCanvas()
+    }
 })
 
 helpButton.addEventListener("click", () => {
@@ -91,12 +104,12 @@ async function createCanvas() {
 function linkAreaInteraction() {
     linkAreaButton = document.createElement("button")
     linkAreaButton.id = "create-link-button"
-    linkAreaButton.textContent = "create selection"
+    linkAreaButton.textContent = "Create Selection"
     linkAreaButton.style.display = "inline-block"
 
     confirmAreaButton = document.createElement("button")
     confirmAreaButton.id = "confirm-area-button"
-    confirmAreaButton.textContent = "generate bbcode"
+    confirmAreaButton.textContent = "Generate BBCode"
     confirmAreaButton.style.display = "none"
 
     mainContent.appendChild(linkAreaButton)
@@ -124,6 +137,7 @@ function linkAreaButtonFunction() {
         canvasContainer.remove()
         linkAreaButton.remove()
         confirmAreaButton.remove()
+        helpButton.remove()
 
         bbcodeContent.style.display = "inline-block"
 
@@ -164,7 +178,7 @@ function bbcodeInteractions() {
     })
 
     let reloadButton = document.createElement("button")
-    reloadButton.textContent = "new image"
+    reloadButton.textContent = "New Image"
     reloadButton.style.display = "block"
     reloadButton.style.marginTop = "1rem"
 
@@ -172,23 +186,32 @@ function bbcodeInteractions() {
     reloadButton.addEventListener("click", () => location.reload())
 }
 
+function checkIfStaticUrl(src) {
+    const imageRegex = /\.(jpg|jpeg|png|webp)$/i
+    return imageRegex.test(src) && !src.includes('?')
+}
+
 async function loadUserImage(src) {
+
     return new Promise((res, rej) => {
-        let image = new Image()
-        image.src = src
-        image
-        .decode()
-        .then(() => res(image))
-        .catch(error => {
+        const image = new Image()
+        image.addEventListener("load", () => res(image))
+        
+        image.addEventListener("error", () => {
             displayMessage.style.animation = "fade-in 0.5s forwards"
             displayMessage.style.display = "block"
             displayMessage.textContent = "Failed to read image. Please check if URL have an image."
+
             setTimeout(() => {displayMessage.style.animation = "fade-out 0.5s forwards"}, 2000)
             setTimeout(() => {
                 displayMessage.style.display = "none"
                 imageUrlInput.style.display = "inline-block"
                 imageUrlButton.style.display = "inline-block"
             }, 2500)
+
+            rej(new Error("Image failed to load."))
         })
+        
+        image.src = src
     })
 }

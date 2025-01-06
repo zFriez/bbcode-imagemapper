@@ -39,20 +39,20 @@ function moreDataInput(scaled, rectangleData) {
     let title = document.createElement("input")
     title.id = "title-input"
     title.type = "text"
-    title.placeholder = "insert title"
+    title.placeholder = "Insert Title"
     title.style.display = "block"
     mainContent.appendChild(title)
     
     let redirectLink = document.createElement("input")
     redirectLink.id = "redirect-url-input"
     redirectLink.type = "url"
-    redirectLink.placeholder = "insert redirect link"
+    redirectLink.placeholder = "Insert Redirect Link"
     redirectLink.style.display = "block"
     mainContent.appendChild(redirectLink)
     
     let confirmDataButton = document.createElement("button")
     confirmDataButton.id = "confirm-data-button"
-    confirmDataButton.textContent = "confirm"
+    confirmDataButton.textContent = "Confirm"
     confirmDataButton.style.marginRight = "0.50rem"
     mainContent.appendChild(confirmDataButton)
 
