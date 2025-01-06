@@ -45,7 +45,7 @@ dialog > pre {
     white-space: pre-line;
     font-family: 'Roboto';
     font-weight: normal;
-    padding: 2.5rem 1rem 1rem 1rem;
+    padding: 1rem 1rem 1rem 1rem;
     border-radius: 1rem;
     user-select: none;
     background-color: var(--message-orange);
@@ -133,6 +133,7 @@ input:focus {
 #display-message {
     display: none;
     font-family: 'Roboto';
+    font-weight: bolder;
     background-color: var(--message-orange);
     padding: 0.25rem 1rem 0.25rem 1rem;
     border-radius: 0.25rem;
